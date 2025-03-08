@@ -1,4 +1,11 @@
-package com.example.examplemod.platform.services;
+package org.ageuxo.lightenup.platform.services;
+
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+
+import java.util.function.Supplier;
 
 public interface IPlatformHelper {
 
@@ -33,4 +40,10 @@ public interface IPlatformHelper {
 
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+    <E extends Block> Supplier<E> registerBlock(String name, Supplier<E> block);
+
+    <BE extends BlockEntity> Supplier<BlockEntityType<BE>> registerBlockEntity(String name, Supplier<BlockEntityType<BE>> beType);
+
+    <I extends Item> Supplier<I> registerItem(String name, Supplier<I> item);
 }

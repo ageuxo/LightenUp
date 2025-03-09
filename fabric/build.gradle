@@ -36,3 +36,10 @@ loom {
         }
     }
 }
+
+jar {
+    from(project(':common').file('src/generated/resources')) {
+        exclude('/.cache')
+        into ''
+    }
+}

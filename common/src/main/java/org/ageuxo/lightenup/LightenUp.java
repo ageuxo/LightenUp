@@ -1,8 +1,11 @@
 package org.ageuxo.lightenup;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import org.ageuxo.lightenup.block.GlowPasteBlock;
 import org.slf4j.Logger;
@@ -20,8 +23,9 @@ public class LightenUp {
 
     public static final Supplier<GlowPasteBlock> GLOW_PASTE_BLOCK = PLATFORM.registerBlock("glow_paste", ()-> new GlowPasteBlock(BlockBehaviour.Properties.of().noOcclusion().lightLevel(GlowPasteBlock::stateToLightLevel)));
 
-    public static final Supplier<BlockItem> GLOW_PASTE_ITEM = PLATFORM.registerItem("glow_paste", ()-> new BlockItem(GLOW_PASTE_BLOCK.get(), new Item.Properties()));
+    public static final Supplier<BlockItem> GLOW_PASTE_ITEM = PLATFORM.registerItem("glow_paste", ()-> new BlockItem(GLOW_PASTE_BLOCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
 
+    public static final Component GLOW_PASTE_INFO = Component.translatable("block.lighten_up.glow_paste.info").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC);
 
     public static void init() {
 

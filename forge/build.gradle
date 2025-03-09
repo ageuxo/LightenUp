@@ -23,13 +23,15 @@ legacyForge {
         minecraftVersion = parchment_minecraft
         mappingsVersion = parchment_version
     }
+    def commonGenerated = project(':common').file('src/generated/resources/')
+    def commonExisting = project(':common').file('src/main/resources/')
     runs {
         client {
             client()
         }
         data {
             data()
-            programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
+            programArguments.addAll '--mod', project.mod_id, '--all', '--output', commonGenerated.getAbsolutePath(), '--existing', commonExisting.getAbsolutePath()
         }
         server {
             server()

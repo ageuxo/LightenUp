@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import org.ageuxo.lightenup.data.ModBlockProvider;
+import org.ageuxo.lightenup.data.ModRecipeProvider;
 
 import static org.ageuxo.lightenup.LightenUp.MOD_ID;
 
@@ -40,6 +41,7 @@ public class LightenUpForge {
     public void onGatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         generator.addProvider(true, new ModBlockProvider(generator.getPackOutput(), MOD_ID, event.getExistingFileHelper()));
+        generator.addProvider(true, new ModRecipeProvider(generator.getPackOutput()));
     }
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

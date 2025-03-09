@@ -1,18 +1,21 @@
 package org.ageuxo.lightenup;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
+import org.ageuxo.lightenup.data.ModBlockProvider;
 
 import static org.ageuxo.lightenup.LightenUp.MOD_ID;
 
@@ -30,6 +33,13 @@ public class LightenUpForge {
         BLOCKS.register(modBus);
         ITEMS.register(modBus);
         BLOCK_ENTITIES.register(modBus);
+
+        modBus.addListener(this::onGatherData);
+    }
+
+    public void onGatherData(GatherDataEvent event) {
+        DataGenerator generator = event.getGenerator();
+        generator.addProvider(true, new ModBlockProvider(generator.getPackOutput(), MOD_ID, event.getExistingFileHelper()));
     }
 
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

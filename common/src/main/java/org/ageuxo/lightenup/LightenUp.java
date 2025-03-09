@@ -19,7 +19,7 @@ public class LightenUp {
     private static final String MOD_NAME = "Lighten Up";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
-    public static final Supplier<GlowPasteBlock> GLOW_PASTE_BLOCK = PLATFORM.registerBlock("glow_paste", ()-> new GlowPasteBlock(BlockBehaviour.Properties.of()));
+    public static final Supplier<GlowPasteBlock> GLOW_PASTE_BLOCK = PLATFORM.registerBlock("glow_paste", ()-> new GlowPasteBlock(BlockBehaviour.Properties.of().noOcclusion()));
 
     public static final Supplier<BlockItem> GLOW_PASTE_ITEM = PLATFORM.registerItem("glow_paste", ()-> new BlockItem(GLOW_PASTE_BLOCK.get(), new Item.Properties()));
 

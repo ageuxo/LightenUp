@@ -1,4 +1,6 @@
 {
   "block.lighten_up.glow_paste": "Glow Paste",
-  "block.lighten_up.glow_paste.info": "Scrape with an axe to lower light level."
+  "block.lighten_up.transient_paste": "Transient Glow Paste",
+  "block.lighten_up.glow_paste.info": "Scrape with an axe to lower light level.",
+  "block.lighten_up.transient_paste.info": "Only visible while holding the paste."
 }

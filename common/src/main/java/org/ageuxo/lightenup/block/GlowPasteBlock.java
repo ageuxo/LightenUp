@@ -32,9 +32,11 @@ public class GlowPasteBlock extends MultifaceBlock {
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final IntegerProperty LIGHT = IntegerProperty.create("light", 1, 3);
+    private final boolean hidden;
 
-    public GlowPasteBlock(Properties properties) {
+    public GlowPasteBlock(Properties properties, boolean hidden) {
         super(properties);
+        this.hidden = hidden;
         registerDefaultState(defaultBlockState().setValue(LIGHT, 3));
     }
 
@@ -77,5 +79,17 @@ public class GlowPasteBlock extends MultifaceBlock {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable BlockGetter level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(LightenUp.GLOW_PASTE_INFO);
+        if (hidden) {
+            tooltip.add(LightenUp.TRANSIENT_PASTE_INFO);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        if (hidden) {
+            return RenderShape.INVISIBLE;
+        }
+        return super.getRenderShape(state);
     }
 }

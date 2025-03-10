@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/barrier",
+  "textures": {
+    "particle": "lighten_up:item/transient_paste"
+  }
+}

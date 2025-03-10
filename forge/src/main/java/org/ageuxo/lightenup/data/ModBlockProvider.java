@@ -17,6 +17,9 @@ public class ModBlockProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         glowPasteWithItem();
+        // Particle model
+        models().withExistingParent("transient_paste", new ResourceLocation("minecraft", "block/barrier"))
+                        .texture("particle", LightenUp.modRL("item/transient_paste"));
         itemModels().basicItem(LightenUp.TRANSIENT_PASTE_ITEM.get());
     }
 

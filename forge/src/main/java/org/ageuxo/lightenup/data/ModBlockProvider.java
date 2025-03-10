@@ -1,7 +1,9 @@
 package org.ageuxo.lightenup.data;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.block.PipeBlock;
 import net.minecraftforge.client.model.generators.BlockModelBuilder;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -16,17 +18,16 @@ public class ModBlockProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        glowPasteWithItem();
-        // Particle model
-        models().withExistingParent("transient_paste", new ResourceLocation("minecraft", "block/barrier"))
-                        .texture("particle", LightenUp.modRL("item/transient_paste"));
-        itemModels().basicItem(LightenUp.TRANSIENT_PASTE_ITEM.get());
+        glowPasteWithItem(LightenUp.GLOW_PASTE_ITEM.get());
+        glowPasteWithItem(LightenUp.TRANSIENT_PASTE_ITEM.get());
     }
 
-    private void glowPasteWithItem() {
-        MultiPartBlockStateBuilder builder = getMultipartBuilder(LightenUp.GLOW_PASTE_BLOCK.get());
-        ResourceLocation blockTexture = LightenUp.modRL("block/glow_paste");
-        BlockModelBuilder model = models().withExistingParent("glow_paste", new ResourceLocation("minecraft", "block/vine"))
+    private void glowPasteWithItem(BlockItem item) {
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(item.getBlock());
+        //noinspection deprecation
+        ResourceLocation location = BuiltInRegistries.ITEM.getKey(item);
+        ResourceLocation blockTexture = location.withPrefix("item/");
+        BlockModelBuilder model = models().withExistingParent(location.getPath(), new ResourceLocation("minecraft", "block/vine"))
                 .texture("particle", blockTexture)
                 .texture("vine", blockTexture)
                 .renderType("translucent");
@@ -39,7 +40,7 @@ public class ModBlockProvider extends BlockStateProvider {
                     .condition(entry.getValue(), true)
                     .end();
         }
-        itemModels().basicItem(LightenUp.GLOW_PASTE_ITEM.get());
+        itemModels().basicItem(item);
     }
 
 }

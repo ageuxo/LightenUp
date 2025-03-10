@@ -2,7 +2,7 @@
   "parent": "minecraft:block/vine",
   "render_type": "minecraft:translucent",
   "textures": {
-    "particle": "lighten_up:block/glow_paste",
-    "vine": "lighten_up:block/glow_paste"
+    "particle": "lighten_up:item/glow_paste",
+    "vine": "lighten_up:item/glow_paste"
   }
 }

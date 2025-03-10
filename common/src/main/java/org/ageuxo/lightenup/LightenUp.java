@@ -25,7 +25,7 @@ public class LightenUp {
     public static final Supplier<GlowPasteBlock> TRANSIENT_PASTE_BLOCK = PLATFORM.registerBlock("transient_paste", ()->new GlowPasteBlock(BlockBehaviour.Properties.of().noOcclusion().lightLevel(GlowPasteBlock::stateToLightLevel), true));
 
     public static final Supplier<BlockItem> GLOW_PASTE_ITEM = PLATFORM.registerItem("glow_paste", ()-> new BlockItem(GLOW_PASTE_BLOCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
-    public static final Supplier<BlockItem> TRANSIENT_PASTE = PLATFORM.registerItem("transient_paste", ()-> new BlockItem(TRANSIENT_PASTE_BLOCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final Supplier<BlockItem> TRANSIENT_PASTE_ITEM = PLATFORM.registerItem("transient_paste", ()-> new BlockItem(TRANSIENT_PASTE_BLOCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static final Component GLOW_PASTE_INFO = Component.translatable("block.lighten_up.glow_paste.info").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC);
     public static final Component TRANSIENT_PASTE_INFO = Component.translatable("block.lighten_up.transient_paste.info").withStyle(ChatFormatting.GRAY, ChatFormatting.ITALIC);

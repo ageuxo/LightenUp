@@ -17,6 +17,7 @@ public class ModBlockProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         glowPasteWithItem();
+        itemModels().basicItem(LightenUp.TRANSIENT_PASTE_ITEM.get());
     }
 
     private void glowPasteWithItem() {

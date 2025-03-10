@@ -21,7 +21,7 @@ public class ClientLevelMixin {
     private void lighten_up$getMarkerParticleInject(CallbackInfoReturnable<Block> cir) {
         LocalPlayer player = this.minecraft.player;
         if (player != null) {
-            BlockItem transientPaste = LightenUp.TRANSIENT_PASTE.get();
+            BlockItem transientPaste = LightenUp.TRANSIENT_PASTE_ITEM.get();
             if (player.getMainHandItem().is(transientPaste) || player.getOffhandItem().is(transientPaste)) {
                 cir.setReturnValue(transientPaste.getBlock());
             }
